@@ -33,15 +33,16 @@ final class SearchVC: UIViewController {
         super.viewDidLoad()
         
         initialize()
-        let reviewVC = storyboard?.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewVC
-        navigationController?.pushViewController(reviewVC, animated: true)
+//        let reviewVC = storyboard?.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewVC
+//        navigationController?.pushViewController(reviewVC, animated: true)
+        
         //let navController = UINavigationController(rootViewController: self)
         //        navController.pushViewController(reviewVC, animated: true)
     }
 
     
     private func initialize() {
-        navigationController?.title = "Search books"
+       // self.title = "Search books"
         
         searchBar.delegate = self
         setupSearchTableView()
@@ -68,7 +69,7 @@ final class SearchVC: UIViewController {
         let nibCell = UINib(nibName: searchTableViewCell, bundle: nil)
         searchTableView.register(nibCell, forCellReuseIdentifier: searchTableViewCell)
         searchTableView.rowHeight = UITableView.automaticDimension
-        searchTableView.estimatedRowHeight = 300
+       // searchTableView.estimatedRowHeight = 300
     }
 }
 
@@ -127,10 +128,16 @@ extension SearchVC: UISearchBarDelegate {
 }
 
 extension SearchVC: SearchVCCellDelegate {
-    func isPressedReviewBookButton() {
+   
+    func isPressedReviewBookButton(idBook: String) {
 //        let navController = UINavigationController(rootViewController: self)
 //        navController.pushViewController(reviewVC, animated: true)
-        print("isPressedReviewBookButton")
+        print("isPressedReviewBookButton", idBook)
+        
+        let reviewVC = storyboard?.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewVC
+        reviewVC.idBook = idBook
+        navigationController?.pushViewController(reviewVC, animated: true)
+        
     }
 }
 

@@ -9,11 +9,33 @@ import UIKit
 
 final class ReviewVC: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    var idBook = String()
+    
+//    init(idBook: String) {
+//    }
+    
+//    required init?(coder: NSCoder) {
+//
+//          // viewModel = ViewModel(apiManager: APIManager())
+//           super.init(coder: coder)
+//         //  viewModel = ViewModel(apiManager: APIManager(), searchView: self)
+//       }
+//
+//
+//    init(idBook: String) {
+//        super.init(
+//        self.idBook = idBook
+//        
+//        required init?(coder: NSCoder) {
+//            fatalError("init(coder:) has not been implemented")
+//        }
+//    }
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        // Do any additional setup after loading the view.
+//    }
     
 
     /*

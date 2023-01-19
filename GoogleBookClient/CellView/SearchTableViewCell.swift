@@ -20,6 +20,7 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var favoritButton: UIButton!
     var isTappedFavoritButton = false
     
+    var idBook = String()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,7 +37,7 @@ class SearchTableViewCell: UITableViewCell {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         //let reviewVC = storyboard.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewVC
      //   navController?.pushViewController(reviewVC, animated: true)
-        searchVC?.isPressedReviewBookButton()
+        searchVC?.isPressedReviewBookButton(idBook: idBook)
     }
     
     @IBAction func isFavoritedButton(_ sender: Any) {
@@ -50,6 +51,7 @@ class SearchTableViewCell: UITableViewCell {
         
         bookNameLabel.text = book.title
         authorNameLabel.text = book.author
+        idBook = book.id
         
         //        try? Books.sharedInstance.getImage(withID: id, { (data) in
         //            DispatchQueue.main.async {
