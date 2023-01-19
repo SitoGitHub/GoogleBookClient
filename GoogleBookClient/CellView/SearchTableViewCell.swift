@@ -14,6 +14,7 @@ class SearchTableViewCell: UITableViewCell {
    // var navController: NavController?
     
     
+    @IBOutlet weak var previewLink: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var bookCoverImage: UIImageView!
@@ -52,6 +53,7 @@ class SearchTableViewCell: UITableViewCell {
         bookNameLabel.text = book.title
         authorNameLabel.text = book.author
         idBook = book.id
+        previewLink.text = book.previewLink
         
         //        try? Books.sharedInstance.getImage(withID: id, { (data) in
         //            DispatchQueue.main.async {

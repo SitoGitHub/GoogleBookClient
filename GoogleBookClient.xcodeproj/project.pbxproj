@@ -18,7 +18,7 @@
 		9F3FE7C12978FF8000F7BF60 /* SearchTableViewCellViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7C02978FF8000F7BF60 /* SearchTableViewCellViewModelDelegate.swift */; };
 		9F3FE7C32979027500F7BF60 /* SearchTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7C22979027500F7BF60 /* SearchTableViewCellDelegate.swift */; };
 		9F3FE7C6297908B200F7BF60 /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7C5297908B200F7BF60 /* ReviewVC.swift */; };
-		9F3FE7CB29791F9600F7BF60 /* SearchVCCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7CA29791F9600F7BF60 /* SearchVCCellDelegate.swift */; };
+		9F3FE7CD2979AED000F7BF60 /* SearchVCCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7CC2979AED000F7BF60 /* SearchVCCellDelegate.swift */; };
 		9F8C39732976E74C0057C306 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C39722976E74C0057C306 /* AppDelegate.swift */; };
 		9F8C39752976E74C0057C306 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C39742976E74C0057C306 /* SceneDelegate.swift */; };
 		9F8C39772976E74C0057C306 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C39762976E74C0057C306 /* SearchVC.swift */; };
@@ -41,7 +41,7 @@
 		9F3FE7C02978FF8000F7BF60 /* SearchTableViewCellViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCellViewModelDelegate.swift; sourceTree = "<group>"; };
 		9F3FE7C22979027500F7BF60 /* SearchTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		9F3FE7C5297908B200F7BF60 /* ReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
-		9F3FE7CA29791F9600F7BF60 /* SearchVCCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchVCCellDelegate.swift; path = ../../../../../../../../../../Desktop/SearchVCCellDelegate.swift; sourceTree = "<group>"; };
+		9F3FE7CC2979AED000F7BF60 /* SearchVCCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCCellDelegate.swift; sourceTree = "<group>"; };
 		9F8C396F2976E74C0057C306 /* GoogleBookClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleBookClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8C39722976E74C0057C306 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F8C39742976E74C0057C306 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 			children = (
 				9F8C39762976E74C0057C306 /* SearchVC.swift */,
 				9F3FE7B2297827C900F7BF60 /* SearchVCProtocol.swift */,
-				9F3FE7CA29791F9600F7BF60 /* SearchVCCellDelegate.swift */,
+				9F3FE7CC2979AED000F7BF60 /* SearchVCCellDelegate.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -241,9 +241,9 @@
 				9F3FE7B9297836CC00F7BF60 /* SearchBuilder.swift in Sources */,
 				9F3FE7B3297827C900F7BF60 /* SearchVCProtocol.swift in Sources */,
 				9F3FE7AE2977C50F00F7BF60 /* APIManager.swift in Sources */,
+				9F3FE7CD2979AED000F7BF60 /* SearchVCCellDelegate.swift in Sources */,
 				9F3FE7A4297786A000F7BF60 /* ViewModel.swift in Sources */,
 				9F3FE7C32979027500F7BF60 /* SearchTableViewCellDelegate.swift in Sources */,
-				9F3FE7CB29791F9600F7BF60 /* SearchVCCellDelegate.swift in Sources */,
 				9F3FE7A6297786D300F7BF60 /* ViewModelDelegate.swift in Sources */,
 				9F3FE7AB2977C20A00F7BF60 /* Book.swift in Sources */,
 				9F3FE7BF2978FF6100F7BF60 /* SearchTableViewCellViewModel.swift in Sources */,
