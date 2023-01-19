@@ -92,7 +92,7 @@ extension SearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: searchTableViewCell, for: indexPath) as! SearchTableViewCell
         cell.searchVC = self
-        cell.searchTableViewCellViewModel = SearchTableViewCellViewModel(apiManager: APIManager())
+        cell.searchTableViewCellViewModel = SearchTableViewCellViewModel(apiManager: APIManager(), coreDataManager: CoreDataManager.shared)
        
         if let element = viewModel?.books[indexPath.row] {
             cell.setup(using: element)

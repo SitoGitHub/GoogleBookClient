@@ -10,7 +10,7 @@ import UIKit
 class SearchTableViewCell: UITableViewCell {
 
     var searchTableViewCellViewModel: SearchTableViewCellViewModelDelegate?
-   var searchVC: SearchVCCellDelegate?
+   weak var searchVC: SearchVCCellDelegate?
    // var navController: NavController?
     
     

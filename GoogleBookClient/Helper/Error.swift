@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - JSONError
 enum JSONError: Error {
     case InvalidURL(String)
     case InvalidKey(String)
@@ -14,4 +15,14 @@ enum JSONError: Error {
     case InvalidData
     case InvalidImage
     case indexOutOfRange
+}
+
+// MARK: - CoreDataErrors
+public enum Errors: Error {
+    case loadBooksError
+    case loadCitiesError
+    case loadMakersError
+    case loadProductsError
+    case loadProdactCategoryError
+    case incorrectProdactCategoryName
 }

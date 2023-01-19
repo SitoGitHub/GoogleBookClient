@@ -10,19 +10,21 @@ import Foundation
 
 final class SearchTableViewCellViewModel {
     
+    let coreDataManager: CoreDataManagerProtocol
     var apiManager: APIManagerProtocol
    // var books: [Book]
     weak var searchTableViewCell: SearchTableViewCellDelegate?
     
-    init(apiManager: APIManagerProtocol) {
+    init(apiManager: APIManagerProtocol, coreDataManager: CoreDataManagerProtocol) {
         self.apiManager = apiManager
+        self.coreDataManager = coreDataManager
         //books = []
     }
 }
 
 extension SearchTableViewCellViewModel: SearchTableViewCellViewModelDelegate {
     func isPressedFavoritButton() {
-        print("isPressedFavoritButton")
+        print("isPressedFavoriteButton")
     }
     
     func isPressedReviewBookButton() {
