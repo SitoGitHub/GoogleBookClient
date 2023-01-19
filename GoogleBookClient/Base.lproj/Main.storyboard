@@ -11,7 +11,7 @@
         <!--SearchVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SearchVC" customModule="GoogleBookClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchVC" id="BYZ-38-t0r" customClass="SearchVC" customModule="GoogleBookClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,27 +26,46 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5eF-yK-b7s">
                                 <rect key="frame" x="0.0" y="134" width="393" height="684"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="w2n-dS-b8V">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="BYZ-38-t0r" id="K4W-Jb-5Be"/>
+                                    </connections>
+                                </searchBar>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="WBm-sG-Pic"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="OPN-Zq-qsi"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hyl-5f-K2Y">
+                                <rect key="frame" x="186.66666666666666" y="396" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="mDK-Wy-iAd"/>
+                                    <constraint firstAttribute="height" constant="20" id="x7q-eq-UJR"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5eF-yK-b7s" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="D57-lh-01h"/>
+                            <constraint firstItem="hyl-5f-K2Y" firstAttribute="centerX" secondItem="5eF-yK-b7s" secondAttribute="centerX" id="Ids-ae-SRW"/>
                             <constraint firstItem="5eF-yK-b7s" firstAttribute="top" secondItem="scr-ZI-pq5" secondAttribute="bottom" id="OOR-Xo-c2J"/>
                             <constraint firstItem="scr-ZI-pq5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SpP-Pl-Ctj"/>
                             <constraint firstItem="5eF-yK-b7s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wd3-zT-tq5"/>
                             <constraint firstItem="5eF-yK-b7s" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="bf6-uS-bwI"/>
                             <constraint firstItem="scr-ZI-pq5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mee-x7-3g0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="scr-ZI-pq5" secondAttribute="trailing" id="qsi-TH-hmR"/>
+                            <constraint firstItem="hyl-5f-K2Y" firstAttribute="centerY" secondItem="5eF-yK-b7s" secondAttribute="centerY" constant="-70" id="x7b-D6-VXg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fVU-j3-A6m"/>
                     <connections>
+                        <outlet property="actitvityIndicator" destination="hyl-5f-K2Y" id="euO-lW-HhS"/>
                         <outlet property="bookListSegmentedControl" destination="scr-ZI-pq5" id="Cjr-b9-cqZ"/>
+                        <outlet property="searchBar" destination="w2n-dS-b8V" id="DOb-wh-ZZW"/>
                         <outlet property="searchTableView" destination="5eF-yK-b7s" id="qgo-Sa-BOk"/>
                     </connections>
                 </viewController>

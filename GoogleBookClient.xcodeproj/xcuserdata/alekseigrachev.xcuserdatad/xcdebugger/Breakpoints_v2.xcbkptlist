@@ -23,17 +23,93 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DE8BAB90-C7E4-4CB3-8B1B-0AE7432BEB48"
+            uuid = "0DD0D55D-2765-4551-82E8-4FFB8644E15C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoogleBookClient/SearchVC.swift"
+            filePath = "GoogleBookClient/Manager/APIManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "makeRequestWithQuery(withQuery:completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B3F97A18-8343-4597-B229-835624E9B4F4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleBookClient/Cell/SearchTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "setup(using:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B3F97A18-8343-4597-B229-835624E9B4F4 - 59ecc16f0123186c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoogleBookClient.SearchTableViewCell.setup(using: GoogleBookClient.Book) -&gt; ()"
+                  moduleName = "GoogleBookClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alekseigrachev/Documents/Swift/Projects/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5/OneVision/GoogleBookClient/GoogleBookClient%202/GoogleBookClient/GoogleBookClient/Cell/SearchTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "1924">
+               </Location>
+               <Location
+                  uuid = "B3F97A18-8343-4597-B229-835624E9B4F4 - 59ecc16f0123186c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoogleBookClient.SearchTableViewCell.setup(using: GoogleBookClient.Book) -&gt; ()"
+                  moduleName = "GoogleBookClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alekseigrachev/Documents/Swift/Projects/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5/OneVision/GoogleBookClient/GoogleBookClient%202/GoogleBookClient/GoogleBookClient/Cell/SearchTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "2000">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B77E4571-5871-4713-89FF-603182B8C023"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleBookClient/Manager/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "makeRequestWithQuery(withQuery:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.RuntimeIssueBreakpoint">
+         <BreakpointContent
+            uuid = "993F483A-C1CE-40B8-8CED-F6C82867BC23"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            type = "8"
+            categories = "CFNetwork">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

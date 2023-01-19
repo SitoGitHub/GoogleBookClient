@@ -27,4 +27,68 @@ class SearchTableViewCell: UITableViewCell {
     
     @IBAction func reviewBookButton(_ sender: Any) {
     }
+    
+    func setup(using book: Book){
+        
+        bookNameLabel.text = book.title
+        authorNameLabel.text = book.author
+        
+        //        try? Books.sharedInstance.getImage(withID: id, { (data) in
+        //            DispatchQueue.main.async {
+        //                self.bookImage.image = UIImage(data: data)
+        //            }
+        //        })
+        
+        //guard let url = book.imageURL else { return }
+//        if let url = book.imageURL {
+//            DispatchQueue.global().async { [weak self] in
+//                if let data = try? Data(contentO) {
+//                    if let image = UIImage(data: data) {
+//                        DispatchQueue.main.async {
+//                            bookCoverImage.image = image
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        let url = URL(string: image.url)
+//
+//        DispatchQueue.global().async {
+//            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+//            DispatchQueue.main.async {
+//                imageView.image = UIImage(data: data!)
+//            }
+//        }
+        
+        
+        guard let url = book.imageURL, url != "" else {
+            if let image = UIImage(named: "noThumb") {
+                bookCoverImage.image = image
+            }
+            return
+        }
+        DispatchQueue.global().async { [weak self] in
+            guard let url = URL(string: url) else { return }
+            let data = try? Data(contentsOf: url)
+            guard let data = data, let image = UIImage(data: data) else { return }
+            DispatchQueue.main.async {
+                self?.bookCoverImage.image = image
+            }
+        }
+        
+    
+    
+    
+        
+//        if let stringUrl = book.imageURL{
+//
+//            let url = URL(string: stringUrl) {
+//                DispatchQueue.main.async {
+//                    bookCoverImage.image = UIImage(named: <#T##String#>)
+//                }
+//                anImage.kf.setImage(with: url)
+//            }
+//        }
+    }
 }
