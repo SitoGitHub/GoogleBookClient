@@ -46,42 +46,10 @@
             filePath = "GoogleBookClient/Cell/SearchTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "setup(using:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B3F97A18-8343-4597-B229-835624E9B4F4 - 59ecc16f0123186c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoogleBookClient.SearchTableViewCell.setup(using: GoogleBookClient.Book) -&gt; ()"
-                  moduleName = "GoogleBookClient"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alekseigrachev/Documents/Swift/Projects/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5/OneVision/GoogleBookClient/GoogleBookClient%202/GoogleBookClient/GoogleBookClient/Cell/SearchTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "1924">
-               </Location>
-               <Location
-                  uuid = "B3F97A18-8343-4597-B229-835624E9B4F4 - 59ecc16f0123186c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoogleBookClient.SearchTableViewCell.setup(using: GoogleBookClient.Book) -&gt; ()"
-                  moduleName = "GoogleBookClient"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/alekseigrachev/Documents/Swift/Projects/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5/OneVision/GoogleBookClient/GoogleBookClient%202/GoogleBookClient/GoogleBookClient/Cell/SearchTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "2000">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -110,6 +78,22 @@
             breakpointStackSelectionBehavior = "1"
             type = "8"
             categories = "CFNetwork">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "738727B5-7165-40D7-9C35-E7BF67583BF8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleBookClient/ViewModel/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "getListBook(withQuery:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

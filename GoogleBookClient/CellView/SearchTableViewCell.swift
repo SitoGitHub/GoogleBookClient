@@ -9,9 +9,16 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
+    var searchTableViewCellViewModel: SearchTableViewCellViewModelDelegate?
+   var searchVC: SearchVCCellDelegate?
+   // var navController: NavController?
+    
+    
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var bookCoverImage: UIImageView!
+    @IBOutlet weak var favoritButton: UIButton!
+    var isTappedFavoritButton = false
     
     
     override func awakeFromNib() {
@@ -26,6 +33,17 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     @IBAction func reviewBookButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //let reviewVC = storyboard.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewVC
+     //   navController?.pushViewController(reviewVC, animated: true)
+        searchVC?.isPressedReviewBookButton()
+    }
+    
+    @IBAction func isFavoritedButton(_ sender: Any) {
+        isTappedFavoritButton = !isTappedFavoritButton
+        let imageButton = isTappedFavoritButton ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
+        favoritButton.setImage(imageButton, for: .normal)
+        searchTableViewCellViewModel?.isPressedFavoritButton()
     }
     
     func setup(using book: Book){
@@ -91,4 +109,9 @@ class SearchTableViewCell: UITableViewCell {
 //            }
 //        }
     }
+}
+
+
+extension SearchTableViewCell: SearchTableViewCellDelegate {
+    
 }

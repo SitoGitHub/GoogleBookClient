@@ -11,6 +11,5 @@ protocol SearchVCProtocol: AnyObject {
     var actitvityIndicator: UIActivityIndicatorView! { get set }
     var searchBar: UISearchBar! { get set }
     var searchTableView: UITableView! { get set }
-    var bookListSegmentedControl: UISegmentedControl! { get set }
     
 }

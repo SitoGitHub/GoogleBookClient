@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--SearchVC-->
+        <!--Search Books-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="SearchVC" id="BYZ-38-t0r" customClass="SearchVC" customModule="GoogleBookClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,6 +22,9 @@
                                     <segment title="Search"/>
                                     <segment title="Favorits"/>
                                 </segments>
+                                <connections>
+                                    <action selector="bookListSegmentedControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="kc2-3f-d9T"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5eF-yK-b7s">
                                 <rect key="frame" x="0.0" y="134" width="393" height="684"/>
@@ -39,7 +42,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="OPN-Zq-qsi"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hyl-5f-K2Y">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hyl-5f-K2Y">
                                 <rect key="frame" x="186.66666666666666" y="396" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="mDK-Wy-iAd"/>
@@ -61,10 +64,9 @@
                             <constraint firstItem="hyl-5f-K2Y" firstAttribute="centerY" secondItem="5eF-yK-b7s" secondAttribute="centerY" constant="-70" id="x7b-D6-VXg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fVU-j3-A6m"/>
+                    <navigationItem key="navigationItem" title="Search Books" id="fVU-j3-A6m"/>
                     <connections>
                         <outlet property="actitvityIndicator" destination="hyl-5f-K2Y" id="euO-lW-HhS"/>
-                        <outlet property="bookListSegmentedControl" destination="scr-ZI-pq5" id="Cjr-b9-cqZ"/>
                         <outlet property="searchBar" destination="w2n-dS-b8V" id="DOb-wh-ZZW"/>
                         <outlet property="searchTableView" destination="5eF-yK-b7s" id="qgo-Sa-BOk"/>
                     </connections>
@@ -72,6 +74,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="924.4274809160305" y="-27.464788732394368"/>
+        </scene>
+        <!--ReviewVC-->
+        <scene sceneID="q4L-pM-Njf">
+            <objects>
+                <viewController storyboardIdentifier="ReviewVC" id="UDO-ce-PUy" customClass="ReviewVC" customModule="GoogleBookClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KTO-nu-zkX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Hl8-do-oEB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V5j-xy-Xsb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1877" y="-38"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ePR-Nn-kiH">

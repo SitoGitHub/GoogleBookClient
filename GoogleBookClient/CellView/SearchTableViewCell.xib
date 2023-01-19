@@ -41,7 +41,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fq-zy-M4N">
                                 <rect key="frame" x="0.0" y="40.666666666666657" width="289" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Tap for preview"/>
                                 <connections>
                                     <action selector="reviewBookButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="svH-NZ-K6N"/>
                                 </connections>
@@ -56,6 +56,10 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                        <connections>
+                            <action selector="isFavoritedButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Umt-PK-lKA"/>
+                            <action selector="reviewBookButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NVK-jX-8VG"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -74,6 +78,7 @@
                 <outlet property="authorNameLabel" destination="ooU-kp-u2d" id="0DR-ZT-jLO"/>
                 <outlet property="bookCoverImage" destination="lVs-3Z-6lz" id="5Gu-m6-3Rr"/>
                 <outlet property="bookNameLabel" destination="cZ8-go-cCX" id="MVN-ck-OzK"/>
+                <outlet property="favoritButton" destination="EzR-OH-o1T" id="bYj-4e-eeo"/>
             </connections>
             <point key="canvasLocation" x="129.7709923664122" y="32.74647887323944"/>
         </tableViewCell>

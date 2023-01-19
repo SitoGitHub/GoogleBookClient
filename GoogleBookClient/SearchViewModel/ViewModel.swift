@@ -14,7 +14,6 @@ final class ViewModel {
     weak var searchView: SearchVCProtocol?
     
     init(apiManager: APIManagerProtocol) {
-   //     self.searchView = SearchVC(coder:)
         self.apiManager = apiManager
         books = []
     }
@@ -29,8 +28,15 @@ extension ViewModel: ViewModelDelegate {
                 self.books = books
                 self.searchView?.searchTableView.reloadData()
                 self.searchView?.searchBar.resignFirstResponder()
+                self.searchView?.actitvityIndicator.stopAnimating()
             }
         }
-        searchView?.actitvityIndicator.stopAnimating()
+    }
+    
+    func isPressedSearchSegmentedControl() {
+        searchView?.searchBar.isHidden = false
+    }
+    func isPressedFavoritSegmentedControl() {
+        searchView?.searchBar.isHidden = true
     }
 }
