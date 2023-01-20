@@ -105,8 +105,11 @@ extension SearchVC: UITableViewDataSource {
         case true:
             if let element = viewModel?.books[indexPath.row] {
                 //cell.setupSearchResult(using: element)
-                cell.setup(bookId: element.id, title: element.title, author: element.author, previewLink: element.previewLink, imageURL: element.imageURL, isSearching: isSearching)
-            }
+                cell.setup(bookId: element.id, title: element.title, author: element.author, previewLink: element.previewLink, imageURL: element.imageURL, isFavorite: element.isFavorite)
+           }
+   //             else {
+//                cell.setup(bookId: "", title: "", author: "", previewLink: "", imageURL: "", isFavorite: false)
+//            }
         case false:
             if let element = viewModel?.favoriteBooks[indexPath.row] {
                 let bookId = element.book_id ?? ""
@@ -115,7 +118,7 @@ extension SearchVC: UITableViewDataSource {
                 let previewLink = element.preview_link ?? "No preview link"
                 let imageURL = element.image_URL ?? ""
                 
-                cell.setup(bookId: bookId, title: title, author: author, previewLink: previewLink, imageURL: imageURL, isSearching: isSearching)
+                cell.setup(bookId: bookId, title: title, author: author, previewLink: previewLink, imageURL: imageURL, isFavorite: true)
             }
         }
         

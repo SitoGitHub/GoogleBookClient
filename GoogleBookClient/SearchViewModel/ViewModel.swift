@@ -12,6 +12,7 @@ final class ViewModel {
     var apiManager: APIManagerProtocol
     let coreDataManager: CoreDataManagerProtocol
     var books: [Book]
+    var deletedBooks: [Book]
     var favoriteBooks: [BookCoreData]
     weak var searchView: SearchVCProtocol?
     
@@ -22,6 +23,7 @@ final class ViewModel {
         self.coreDataManager = coreDataManager
         books = []
         favoriteBooks = []
+        deletedBooks = []
     }
     
     //create New Book
@@ -38,7 +40,7 @@ final class ViewModel {
         return newBook
     }
     
-    //получение общего списка категорий продуктов
+    //get all favorite books
     func fetchFavoriteBooks () {
         let favoriteBooks = coreDataManager.getFavoriteBooks()
         switch favoriteBooks {
@@ -54,14 +56,36 @@ final class ViewModel {
 
 extension ViewModel: ViewModelDelegate {
     
+    //get list books with query
     func getListBook(withQuery text: String) {
         searchView?.activityIndicator.startAnimating()
         try? apiManager.makeRequestWithQuery(withQuery: text) { books in
+            self.books = books
+            for book in self.books {
+                let booksCore = self.coreDataManager.getBookWithBookId(bookId: book.id)
+                switch booksCore {
+                case.success(let booksCore):
+                    if booksCore.count > 0 {
+                        if let index = books.firstIndex(where: { $0.id == book.id }){
+                            self.books[index].isFavorite = true
+                        }
+                    }
+                case .failure(let error):
+                    // self.presenter?.fetchedMakerData(maker: nil, error: error)
+                    print(error)
+                }
+            }
             DispatchQueue.main.async {
-                self.books = books
-                self.searchView?.searchTableView.reloadData()
                 self.searchView?.searchBar.resignFirstResponder()
                 self.searchView?.activityIndicator.stopAnimating()
+//                if self.books.count == 0 {
+//                    guard let tableView = self.searchView?.searchTableView else { return }
+//                    let count = tableView(tableView, numberOfRowsInSection: 0)
+//                    // insert action that deletes all your data from the model here
+//                    // e.g. self.arrayOfRows = []
+//                    self.tableView.deleteRows(at: (0..<count).map({ (i) in IndexPath(row: i, section: 0)}), with: .automatic)
+//                }
+                self.searchView?.searchTableView.reloadData()
             }
         }
     }
@@ -89,49 +113,63 @@ extension ViewModel: ViewModelDelegate {
         
         
       //  if let book = books.first(where: { $0.id == bookId }) {
-            switch isFavorite {
+            
+        switch isFavorite {
+        //if state is Favorite
+        case true:
+            var book = Book(title: "", authors: "", id: "", imageURL: "", previewLink: "")
+           // var favoriteBook: BookCoreData?
+            switch isSearching {
             case true:
-                
-                var book: Book?
-               // var favoriteBook: BookCoreData?
-                switch isSearching {
-                case true:
-                    if let firstBook = books.first(where: { $0.id == bookId }) {
-                        book = firstBook
-                    }
-                case false:
-                    if let favoriteBook = favoriteBooks.first(where: { $0.book_id == bookId }) {
-                        if let id = favoriteBook.book_id {
-                            book?.id = id
-                        }
-                        if let author = favoriteBook.author {
-                            book?.author = author
-                        }
-                        if let title = favoriteBook.title {
-                            book?.title = title
-                        }
-                        if let url = favoriteBook.image_URL {
-                            book?.imageURL = url
-                        }
-                        if let previewLink = favoriteBook.preview_link {
-                            book?.previewLink = previewLink
-                        }
-                    }
+                if let index = books.firstIndex(where: { $0.id == bookId }){
+                    book = books[index]
+                    books[index].isFavorite = true
                 }
                 
+            case false:
+                if let deletedBook = deletedBooks.first(where: { $0.id == bookId }){
+                    book = deletedBook
+                }
+               // print(books.firstIndex(where: { $0.id == bookId }))
+//                if let favoriteBook = favoriteBooks.first(where: { $0.book_id == bookId }) {
+////                        if let id = favoriteBook.book_id {
+////                            book?.id = id
+////                        }
+////                        if let author = favoriteBook.author {
+////                            book?.author = author
+////                        }
+////                        if let title = favoriteBook.title {
+////                            book?.title = title
+////                        }
+////                        if let url = favoriteBook.image_URL {
+////                            book?.imageURL = url
+////                        }
+////                        if let previewLink = favoriteBook.preview_link {
+////                            book?.previewLink = previewLink
+////                        }
+//                    print (favoriteBook.book_id)
+//                    book.id = favoriteBook.book_id ?? ""
+//                    book.author = favoriteBook.author ?? ""
+//                    book.title = favoriteBook.title ?? ""
+//                    book.imageURL = favoriteBook.image_URL ?? ""
+//                    book.previewLink = favoriteBook.preview_link ?? ""
+//                    print (book.id)
+//                }
+            }
                 let booksCore = coreDataManager.getBookWithBookId(bookId: bookId)
                 switch booksCore {
                 case.success(let booksCore):
-                    if booksCore.count == 0, let book = book {
+                    
+                    if booksCore.count == 0 {
                         
                         let newBook = createNewBook(book: book)
                         
                     } else {
                         for bookCore in booksCore{
-                            bookCore.setValue(book?.previewLink, forKey: "preview_link")
-                            bookCore.setValue(book?.imageURL, forKey: "image_URL")
-                            bookCore.setValue(book?.title, forKey: "title")
-                            bookCore.setValue(book?.author, forKey: "author")
+                            bookCore.setValue(book.previewLink, forKey: "preview_link")
+                            bookCore.setValue(book.imageURL, forKey: "image_URL")
+                            bookCore.setValue(book.title, forKey: "title")
+                            bookCore.setValue(book.author, forKey: "author")
                         }
                     }
                     coreDataManager.saveContext()
@@ -140,20 +178,31 @@ extension ViewModel: ViewModelDelegate {
                     print(error)
                 }
                 
-            case false:
-                let result: Result<Bool, Errors>
-                
-                result = coreDataManager.deleteBook(bookId: bookId)
-                switch result {
-                case.success(_):
-                    coreDataManager.saveContext()
-                    //resultModifyCategory = result
-                case .failure(let error):
-                    // self.presenter?.getErrorWhenFetchedProductCategoriesData(error: error)
-                    print(error)
+        case false:
+            var book = Book(title: "", authors: "", id: "", imageURL: "", previewLink: "")
+            let result: Result<Bool, Errors>
+            if let favoriteBook = favoriteBooks.first(where: { $0.book_id == bookId }) {
+                book.id = favoriteBook.book_id ?? ""
+                book.author = favoriteBook.author ?? ""
+                book.title = favoriteBook.title ?? ""
+                book.imageURL = favoriteBook.image_URL ?? ""
+                book.previewLink = favoriteBook.preview_link ?? ""
+            }
+            result = coreDataManager.deleteBook(bookId: bookId)
+            switch result {
+            case.success(_):
+                deletedBooks.append(book)
+                if let index = books.firstIndex(where: { $0.id == book.id }){
+                    self.books[index].isFavorite = false
                 }
-                //reWriteMakerAnnotation()
-                
+                coreDataManager.saveContext()
+                //resultModifyCategory = result
+            case .failure(let error):
+                // self.presenter?.getErrorWhenFetchedProductCategoriesData(error: error)
+                print(error)
+            }
+            //reWriteMakerAnnotation()
+            
                 
             }
         //}

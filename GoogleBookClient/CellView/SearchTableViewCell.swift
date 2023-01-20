@@ -42,7 +42,9 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     @IBAction func isFavoritedButton(_ sender: Any) {
+        print(isFavorite)
         isFavorite = !isFavorite
+        print(isFavorite)
         let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
         favoritButton.setImage(imageButton, for: .normal)
         //searchTableViewCellViewModel?.isPressedFavoritButton()
@@ -54,12 +56,13 @@ class SearchTableViewCell: UITableViewCell {
     
     
    // func setup(using book: Book){
-    func setup(bookId: String, title: String, author: String, previewLink: String, imageURL: String, isSearching: Bool) {
+    func setup(bookId: String, title: String, author: String, previewLink: String, imageURL: String, isFavorite: Bool) {
         
         bookNameLabel.text = title
         authorNameLabel.text = author
         self.bookId = bookId
         self.previewLink.text = previewLink
+        self.isFavorite = isFavorite
         
 //        if !isSearching {
 //            isFavorite = true
@@ -68,7 +71,7 @@ class SearchTableViewCell: UITableViewCell {
 //        } else {
 //            isFavorite = false
 //
-            let imageButton = !isSearching ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
+            let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
             favoritButton.setImage(imageButton, for: .normal)
             
 //        }

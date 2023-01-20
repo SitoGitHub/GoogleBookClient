@@ -45,6 +45,8 @@ extension APIManager: APIManagerProtocol {
     func makeRequestWithQuery(withQuery text: String, completion: @escaping ([Book]) -> Void) throws {
         let session = URLSession.shared
         
+        result = []
+        
         // Generate the query for this text
         var query = bookQueryTemplate
         query.append(URLQueryItem(name: "q", value: text))
