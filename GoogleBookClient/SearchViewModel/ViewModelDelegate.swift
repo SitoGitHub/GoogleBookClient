@@ -9,8 +9,10 @@ import Foundation
 
 protocol ViewModelDelegate: AnyObject {
     var books: [Book] { get }
+    var favoriteBooks: [BookCoreData] { get }
     
     func getListBook(withQuery text: String)
     func isPressedSearchSegmentedControl()
-    func isPressedFavoritSegmentedControl()
+    func isPressedFavoriteSegmentedControl()
+    func isPressedFavoriteButton(bookId: String, isFavorite: Bool)
 }

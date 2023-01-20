@@ -19,9 +19,9 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var bookCoverImage: UIImageView!
     @IBOutlet weak var favoritButton: UIButton!
-    var isTappedFavoritButton = false
-    
-    var idBook = String()
+    var isFavorite = false
+    var book: Book?
+    var bookId = String()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,25 +35,43 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     @IBAction func reviewBookButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      //  let storyboard = UIStoryboard(name: "Main", bundle: nil)
         //let reviewVC = storyboard.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewVC
      //   navController?.pushViewController(reviewVC, animated: true)
-        searchVC?.isPressedReviewBookButton(idBook: idBook)
+       // searchVC?.isPressedReviewBookButton(idBook: idBook)
     }
     
     @IBAction func isFavoritedButton(_ sender: Any) {
-        isTappedFavoritButton = !isTappedFavoritButton
-        let imageButton = isTappedFavoritButton ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
+        isFavorite = !isFavorite
+        let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
         favoritButton.setImage(imageButton, for: .normal)
-        searchTableViewCellViewModel?.isPressedFavoritButton()
+        //searchTableViewCellViewModel?.isPressedFavoritButton()
+       // if let book = book {
+            searchVC?.isPressedFavoriteButton(bookId: bookId, isFavorite: isFavorite)
+      //  }
     }
     
-    func setup(using book: Book){
+    
+    
+   // func setup(using book: Book){
+    func setup(bookId: String, title: String, author: String, previewLink: String, imageURL: String, isSearching: Bool) {
         
-        bookNameLabel.text = book.title
-        authorNameLabel.text = book.author
-        idBook = book.id
-        previewLink.text = book.previewLink
+        bookNameLabel.text = title
+        authorNameLabel.text = author
+        self.bookId = bookId
+        self.previewLink.text = previewLink
+        
+//        if !isSearching {
+//            isFavorite = true
+//            let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
+//            favoritButton.setImage(imageButton, for: .normal)
+//        } else {
+//            isFavorite = false
+//
+            let imageButton = !isSearching ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
+            favoritButton.setImage(imageButton, for: .normal)
+            
+//        }
         
         //        try? Books.sharedInstance.getImage(withID: id, { (data) in
         //            DispatchQueue.main.async {
@@ -84,14 +102,14 @@ class SearchTableViewCell: UITableViewCell {
 //        }
         
         
-        guard let url = book.imageURL, url != "" else {
+        guard  imageURL != "" else {
             if let image = UIImage(named: "noThumb") {
                 bookCoverImage.image = image
             }
             return
         }
         DispatchQueue.global().async { [weak self] in
-            guard let url = URL(string: url) else { return }
+            guard let url = URL(string: imageURL) else { return }
             let data = try? Data(contentsOf: url)
             guard let data = data, let image = UIImage(data: data) else { return }
             DispatchQueue.main.async {

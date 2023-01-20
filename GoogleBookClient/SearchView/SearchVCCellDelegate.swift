@@ -9,6 +9,6 @@ import Foundation
 
 protocol SearchVCCellDelegate: AnyObject {
     func isPressedReviewBookButton(idBook: String)
-    
+    func isPressedFavoriteButton(bookId: String, isFavorite: Bool)
     
 }

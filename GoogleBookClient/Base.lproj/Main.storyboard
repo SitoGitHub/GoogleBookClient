@@ -66,7 +66,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search Books" id="fVU-j3-A6m"/>
                     <connections>
-                        <outlet property="actitvityIndicator" destination="hyl-5f-K2Y" id="euO-lW-HhS"/>
+                        <outlet property="activityIndicator" destination="hyl-5f-K2Y" id="j1Q-K6-Ffr"/>
                         <outlet property="searchBar" destination="w2n-dS-b8V" id="DOb-wh-ZZW"/>
                         <outlet property="searchTableView" destination="5eF-yK-b7s" id="qgo-Sa-BOk"/>
                     </connections>

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SearchVCProtocol: AnyObject {
-    var actitvityIndicator: UIActivityIndicatorView! { get set }
+    var activityIndicator: UIActivityIndicatorView! { get set }
     var searchBar: UISearchBar! { get set }
     var searchTableView: UITableView! { get set }
     

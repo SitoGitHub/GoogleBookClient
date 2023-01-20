@@ -10,7 +10,7 @@ import UIKit
 class SearchBuilder {
     static func build(factory: NavigationFactory) -> UINavigationController {
         let apiManager = APIManager()
-        let viewModel = ViewModel(apiManager: apiManager)
+        let viewModel = ViewModel(apiManager: apiManager, coreDataManager: CoreDataManager.shared) 
 //        let searchTableViewCellStoryboard = UIStoryboard(name: "SearchTableViewCell", bundle: nil)
 //        let nibCell = UINib(nibName: "SearchTableViewCell", bundle: nil)
 //        let searchTableViewCell = nibCell.instantiate(withOwner: <#T##Any?#>)

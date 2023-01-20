@@ -62,8 +62,9 @@ extension APIManager: APIManagerProtocol {
         
         session.dataTask(with: url, completionHandler: {(data, response, error) -> Void in
             do {
-                let json = try JSONSerialization.jsonObject(with: data!) as! [String: AnyObject]
-                guard let items = json["items"] as! [[String: Any]]? else {
+                guard let data = data else { return }
+                let json = try JSONSerialization.jsonObject(with: data) as? [String: AnyObject]
+                guard let items = json?["items"] as! [[String: Any]]? else {
                     throw JSONError.InvalidArray("items")
                 }
                 

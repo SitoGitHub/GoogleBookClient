@@ -13,13 +13,12 @@ final class SearchVC: UIViewController {
     //let cell = SearchTableViewCell
     
     let searchTableViewCell = "SearchTableViewCell"
-   
     
-    @IBOutlet weak var actitvityIndicator: UIActivityIndicatorView! // {
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! // {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
 
-    
+    var isSearching = true
     
     //
 //    required init?(coder: NSCoder) {
@@ -52,9 +51,11 @@ final class SearchVC: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             viewModel?.isPressedSearchSegmentedControl()
+            isSearching = true
             print(sender.selectedSegmentIndex)
         case 1:
-            viewModel?.isPressedFavoritSegmentedControl()
+            viewModel?.isPressedFavoriteSegmentedControl()
+            isSearching = false
             print(sender.selectedSegmentIndex)
         default: break
         }
@@ -86,16 +87,36 @@ extension SearchVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.books.count ?? 0
+        var numberOfRows = 0
+        switch isSearching {
+        case true:
+            numberOfRows = viewModel?.books.count ?? 0
+        case false:
+            numberOfRows = viewModel?.favoriteBooks.count ?? 0
+        }
+        return numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: searchTableViewCell, for: indexPath) as! SearchTableViewCell
         cell.searchVC = self
         cell.searchTableViewCellViewModel = SearchTableViewCellViewModel(apiManager: APIManager(), coreDataManager: CoreDataManager.shared)
-       
-        if let element = viewModel?.books[indexPath.row] {
-            cell.setup(using: element)
+        switch isSearching {
+        case true:
+            if let element = viewModel?.books[indexPath.row] {
+                //cell.setupSearchResult(using: element)
+                cell.setup(bookId: element.id, title: element.title, author: element.author, previewLink: element.previewLink, imageURL: element.imageURL, isSearching: isSearching)
+            }
+        case false:
+            if let element = viewModel?.favoriteBooks[indexPath.row] {
+                let bookId = element.book_id ?? ""
+                let title = element.title ?? "Title not available"
+                let author = element.author ?? "No author information"
+                let previewLink = element.preview_link ?? "No preview link"
+                let imageURL = element.image_URL ?? ""
+                
+                cell.setup(bookId: bookId, title: title, author: author, previewLink: previewLink, imageURL: imageURL, isSearching: isSearching)
+            }
         }
         
         return cell
@@ -138,6 +159,11 @@ extension SearchVC: SearchVCCellDelegate {
         reviewVC.idBook = idBook
         navigationController?.pushViewController(reviewVC, animated: true)
         
+    }
+    
+    func isPressedFavoriteButton(bookId: String, isFavorite: Bool) {
+        viewModel?.isPressedFavoriteButton(bookId: bookId, isFavorite: isFavorite)
+        //print("isPressedFavoriteButton")
     }
 }
 
