@@ -7,12 +7,11 @@
 
 import UIKit
 
-class SearchTableViewCell: UITableViewCell {
+final class SearchTableViewCell: UITableViewCell {
 
     var searchTableViewCellViewModel: SearchTableViewCellViewModelDelegate?
    weak var searchVC: SearchVCCellDelegate?
-   // var navController: NavController?
-    
+    let imageManager: ImageManagerProtocol = ImageManager()
     
     @IBOutlet weak var previewLink: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
@@ -64,75 +63,16 @@ class SearchTableViewCell: UITableViewCell {
         self.previewLink.text = previewLink
         self.isFavorite = isFavorite
         
-//        if !isSearching {
-//            isFavorite = true
-//            let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
-//            favoritButton.setImage(imageButton, for: .normal)
-//        } else {
-//            isFavorite = false
-//
-            let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
-            favoritButton.setImage(imageButton, for: .normal)
-            
-//        }
+        let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
+        favoritButton.setImage(imageButton, for: .normal)
         
-        //        try? Books.sharedInstance.getImage(withID: id, { (data) in
-        //            DispatchQueue.main.async {
-        //                self.bookImage.image = UIImage(data: data)
-        //            }
-        //        })
-        
-        //guard let url = book.imageURL else { return }
-//        if let url = book.imageURL {
-//            DispatchQueue.global().async { [weak self] in
-//                if let data = try? Data(contentO) {
-//                    if let image = UIImage(data: data) {
-//                        DispatchQueue.main.async {
-//                            bookCoverImage.image = image
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//        let url = URL(string: image.url)
-//
-//        DispatchQueue.global().async {
-//            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-//            DispatchQueue.main.async {
-//                imageView.image = UIImage(data: data!)
-//            }
-//        }
-        
-        
-        guard  imageURL != "" else {
-            if let image = UIImage(named: "noThumb") {
-                bookCoverImage.image = image
-            }
-            return
-        }
-        DispatchQueue.global().async { [weak self] in
-            guard let url = URL(string: imageURL) else { return }
-            let data = try? Data(contentsOf: url)
-            guard let data = data, let image = UIImage(data: data) else { return }
+        self.bookCoverImage.image = nil
+        DispatchQueue.global(qos: .utility).async { [weak self] in
+            let image = self?.imageManager.loadImageUsingUrlString(urlString: imageURL)
             DispatchQueue.main.async {
                 self?.bookCoverImage.image = image
             }
         }
-        
-    
-    
-    
-        
-//        if let stringUrl = book.imageURL{
-//
-//            let url = URL(string: stringUrl) {
-//                DispatchQueue.main.async {
-//                    bookCoverImage.image = UIImage(named: <#T##String#>)
-//                }
-//                anImage.kf.setImage(with: url)
-//            }
-//        }
     }
 }
 
