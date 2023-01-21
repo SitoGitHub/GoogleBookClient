@@ -122,7 +122,7 @@ extension ViewModel: ViewModelDelegate {
             switch booksCore {
             case.success(let booksCore):
                 if booksCore.count == 0 {
-                    let newBook = createNewBook(book: book)
+                    _ = createNewBook(book: book)
                 } else {
                     for bookCore in booksCore{
                         bookCore.setValue(book.previewLink, forKey: "preview_link")

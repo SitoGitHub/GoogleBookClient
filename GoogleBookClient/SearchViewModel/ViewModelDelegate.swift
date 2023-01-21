@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//MARK: - ViewModelDelegate
 protocol ViewModelDelegate: AnyObject {
     var books: [Book] { get }
     var favoriteBooks: [BookCoreData] { get }
