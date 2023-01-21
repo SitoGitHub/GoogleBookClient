@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// MARK: - Struct for Book
 struct Book {
     var title: String
     var author: String

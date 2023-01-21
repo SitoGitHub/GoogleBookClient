@@ -6,19 +6,20 @@
 //
 
 import UIKit
-
+// MARK: - ImageManagerProtocol
 protocol ImageManagerProtocol {
     func loadImageUsingUrlString(urlString: String) -> UIImage?
 }
-
+// MARK: - class ImageManager
 final class ImageManager {
+    // MARK: -
     let imageCache = NSCache<AnyObject, AnyObject>()
     var image: UIImage?
     var imageUrlString: String?
 }
-
+// MARK: - extension ImageManager: ImageManagerProtocol
 extension ImageManager: ImageManagerProtocol {
-    
+    // load Image Using Url String
     func loadImageUsingUrlString(urlString: String) -> UIImage? {
         imageUrlString = urlString
         

@@ -17,9 +17,6 @@
 		9F3FE7B02977D00C00F7BF60 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7AF2977D00C00F7BF60 /* Error.swift */; };
 		9F3FE7B3297827C900F7BF60 /* SearchVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7B2297827C900F7BF60 /* SearchVCProtocol.swift */; };
 		9F3FE7B9297836CC00F7BF60 /* SearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7B4297836CC00F7BF60 /* SearchBuilder.swift */; };
-		9F3FE7BF2978FF6100F7BF60 /* SearchTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7BE2978FF6100F7BF60 /* SearchTableViewCellViewModel.swift */; };
-		9F3FE7C12978FF8000F7BF60 /* SearchTableViewCellViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7C02978FF8000F7BF60 /* SearchTableViewCellViewModelDelegate.swift */; };
-		9F3FE7C32979027500F7BF60 /* SearchTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7C22979027500F7BF60 /* SearchTableViewCellDelegate.swift */; };
 		9F3FE7C6297908B200F7BF60 /* ReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7C5297908B200F7BF60 /* ReviewVC.swift */; };
 		9F3FE7CD2979AED000F7BF60 /* SearchVCCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7CC2979AED000F7BF60 /* SearchVCCellDelegate.swift */; };
 		9F3FE7CF2979B17C00F7BF60 /* NavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7CE2979B17C00F7BF60 /* NavigationBuilder.swift */; };
@@ -47,9 +44,6 @@
 		9F3FE7AF2977D00C00F7BF60 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		9F3FE7B2297827C900F7BF60 /* SearchVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCProtocol.swift; sourceTree = "<group>"; };
 		9F3FE7B4297836CC00F7BF60 /* SearchBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBuilder.swift; sourceTree = "<group>"; };
-		9F3FE7BE2978FF6100F7BF60 /* SearchTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCellViewModel.swift; sourceTree = "<group>"; };
-		9F3FE7C02978FF8000F7BF60 /* SearchTableViewCellViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCellViewModelDelegate.swift; sourceTree = "<group>"; };
-		9F3FE7C22979027500F7BF60 /* SearchTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		9F3FE7C5297908B200F7BF60 /* ReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewVC.swift; sourceTree = "<group>"; };
 		9F3FE7CC2979AED000F7BF60 /* SearchVCCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVCCellDelegate.swift; sourceTree = "<group>"; };
 		9F3FE7CE2979B17C00F7BF60 /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
@@ -114,15 +108,6 @@
 				9F3FE7CC2979AED000F7BF60 /* SearchVCCellDelegate.swift */,
 			);
 			path = SearchView;
-			sourceTree = "<group>";
-		};
-		9F3FE7C42979029D00F7BF60 /* CellViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9F3FE7BE2978FF6100F7BF60 /* SearchTableViewCellViewModel.swift */,
-				9F3FE7C02978FF8000F7BF60 /* SearchTableViewCellViewModelDelegate.swift */,
-			);
-			path = CellViewModel;
 			sourceTree = "<group>";
 		};
 		9F3FE7C72979099900F7BF60 /* ReviewView */ = {
@@ -203,7 +188,6 @@
 				9F3FE7A92977C1ED00F7BF60 /* Model */,
 				9F3FE7AC2977C4F600F7BF60 /* Manager */,
 				9FEBC5A52976F9DC0015E097 /* CellView */,
-				9F3FE7C42979029D00F7BF60 /* CellViewModel */,
 				9F3FE7B129780B3E00F7BF60 /* SearchView */,
 				9F3FE7A7297786EE00F7BF60 /* SearchViewModel */,
 				9F3FE7C72979099900F7BF60 /* ReviewView */,
@@ -221,7 +205,6 @@
 			children = (
 				9FEBC5AB29771AA90015E097 /* SearchTableViewCell.xib */,
 				9FEBC5AA29771AA90015E097 /* SearchTableViewCell.swift */,
-				9F3FE7C22979027500F7BF60 /* SearchTableViewCellDelegate.swift */,
 			);
 			path = CellView;
 			sourceTree = "<group>";
@@ -309,13 +292,10 @@
 				9F0D611D297BB86E00F70CE8 /* ImageManager.swift in Sources */,
 				9F3FE7CD2979AED000F7BF60 /* SearchVCCellDelegate.swift in Sources */,
 				9F3FE7A4297786A000F7BF60 /* ViewModel.swift in Sources */,
-				9F3FE7C32979027500F7BF60 /* SearchTableViewCellDelegate.swift in Sources */,
 				9F3FE7A6297786D300F7BF60 /* ViewModelDelegate.swift in Sources */,
 				9F3FE7AB2977C20A00F7BF60 /* Book.swift in Sources */,
-				9F3FE7BF2978FF6100F7BF60 /* SearchTableViewCellViewModel.swift in Sources */,
 				9F3FE7DB2979C34B00F7BF60 /* CoreDataManager.swift in Sources */,
 				9F8C39772976E74C0057C306 /* SearchVC.swift in Sources */,
-				9F3FE7C12978FF8000F7BF60 /* SearchTableViewCellViewModelDelegate.swift in Sources */,
 				9F0D60F8297A904400F70CE8 /* BookCoreData+CoreDataProperties.swift in Sources */,
 				9F8C39732976E74C0057C306 /* AppDelegate.swift in Sources */,
 				9F8C39752976E74C0057C306 /* SceneDelegate.swift in Sources */,

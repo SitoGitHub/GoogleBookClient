@@ -6,9 +6,7 @@
 //
 
 import Foundation
-
+//MARK: - SearchVCCellDelegate
 protocol SearchVCCellDelegate: AnyObject {
-    func isPressedReviewBookButton(idBook: String)
-    func isPressedFavoriteButton(bookId: String, isFavorite: Bool)
-    
+    func isPressedFavoriteButton(bookId: String, isFavorite: Bool)    
 }

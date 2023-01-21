@@ -6,11 +6,10 @@
 //
 
 import UIKit
-
+//MARK: - class SearchTableViewCell
 final class SearchTableViewCell: UITableViewCell {
-
-    var searchTableViewCellViewModel: SearchTableViewCellViewModelDelegate?
-   weak var searchVC: SearchVCCellDelegate?
+    //MARK: - Properties
+    weak var searchVC: SearchVCCellDelegate?
     let imageManager: ImageManagerProtocol = ImageManager()
     
     @IBOutlet weak var previewLink: UILabel!
@@ -24,37 +23,20 @@ final class SearchTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-    @IBAction func reviewBookButton(_ sender: Any) {
-      //  let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //let reviewVC = storyboard.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewVC
-     //   navController?.pushViewController(reviewVC, animated: true)
-       // searchVC?.isPressedReviewBookButton(idBook: idBook)
-    }
-    
+  //change a book`s favorite status
     @IBAction func isFavoritedButton(_ sender: Any) {
-        print(isFavorite)
         isFavorite = !isFavorite
-        print(isFavorite)
         let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
         favoritButton.setImage(imageButton, for: .normal)
-        //searchTableViewCellViewModel?.isPressedFavoritButton()
-       // if let book = book {
-            searchVC?.isPressedFavoriteButton(bookId: bookId, isFavorite: isFavorite)
-      //  }
+        searchVC?.isPressedFavoriteButton(bookId: bookId, isFavorite: isFavorite)
     }
-    
-    
-    
-   // func setup(using book: Book){
+    // set cell properties
     func setup(bookId: String, title: String, author: String, previewLink: String, imageURL: String, isFavorite: Bool) {
         
         bookNameLabel.text = title
@@ -76,7 +58,3 @@ final class SearchTableViewCell: UITableViewCell {
     }
 }
 
-
-extension SearchTableViewCell: SearchTableViewCellDelegate {
-    
-}

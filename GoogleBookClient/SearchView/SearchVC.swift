@@ -6,80 +6,52 @@
 //
 
 import UIKit
-
+//MARK: - class SearchVC
 final class SearchVC: UIViewController {
-    
+    //MARK: - Properties
     var viewModel: ViewModelDelegate?
-    //let cell = SearchTableViewCell
-    
     let searchTableViewCell = "SearchTableViewCell"
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! // {
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
-
+    
     var isSearching = true
     
-    //
-//    required init?(coder: NSCoder) {
-//
-//       // viewModel = ViewModel(apiManager: APIManager())
-//        super.init(coder: coder)
-//      //  viewModel = ViewModel(apiManager: APIManager(), searchView: self)
-//    }
-//
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         initialize()
-//        let reviewVC = storyboard?.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewVC
-//        navigationController?.pushViewController(reviewVC, animated: true)
-        
-        //let navController = UINavigationController(rootViewController: self)
-        //        navController.pushViewController(reviewVC, animated: true)
     }
-
     
     private func initialize() {
-       // self.title = "Search books"
-        
         searchBar.delegate = self
         setupSearchTableView()
     }
-    
+    //change search and favorite screens
     @IBAction func bookListSegmentedControl(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             viewModel?.isPressedSearchSegmentedControl()
             isSearching = true
-            print(sender.selectedSegmentIndex)
         case 1:
             viewModel?.isPressedFavoriteSegmentedControl()
             isSearching = false
-            print(sender.selectedSegmentIndex)
+            
         default: break
         }
         
     }
-    
+    //setup Search TableView
     private func setupSearchTableView() {
-   //     searchTableView.delegate = self
         searchTableView.dataSource = self
-        
         //register cell
         let nibCell = UINib(nibName: searchTableViewCell, bundle: nil)
         searchTableView.register(nibCell, forCellReuseIdentifier: searchTableViewCell)
         searchTableView.rowHeight = UITableView.automaticDimension
-       // searchTableView.estimatedRowHeight = 300
+        // searchTableView.estimatedRowHeight = 300
     }
 }
-
-extension SearchVC: SearchVCProtocol {
-   
-    
-    
-}
-
+//MARK: - extension SearchVC: UITableViewDataSource
 extension SearchVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -100,16 +72,11 @@ extension SearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: searchTableViewCell, for: indexPath) as! SearchTableViewCell
         cell.searchVC = self
-        cell.searchTableViewCellViewModel = SearchTableViewCellViewModel(apiManager: APIManager(), coreDataManager: CoreDataManager.shared)
         switch isSearching {
         case true:
             if let element = viewModel?.books[indexPath.row] {
-                //cell.setupSearchResult(using: element)
                 cell.setup(bookId: element.id, title: element.title, author: element.author, previewLink: element.previewLink, imageURL: element.imageURL, isFavorite: element.isFavorite)
-           }
-   //             else {
-//                cell.setup(bookId: "", title: "", author: "", previewLink: "", imageURL: "", isFavorite: false)
-//            }
+            }
         case false:
             if let element = viewModel?.favoriteBooks[indexPath.row] {
                 let bookId = element.book_id ?? ""
@@ -121,52 +88,27 @@ extension SearchVC: UITableViewDataSource {
                 cell.setup(bookId: bookId, title: title, author: author, previewLink: previewLink, imageURL: imageURL, isFavorite: true)
             }
         }
-        
         return cell
     }
+}
+//MARK: - extension SearchVC: SearchVCProtocol
+extension SearchVC: SearchVCProtocol {
     
 }
-//
-//extension SearchVC: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let cell = tableView.cellForRow(at: indexPath)
-//        else { return }
-//        let index = indexPath.row
-////        let check = presenter?.didSelectRowAt(index: index)
-////        cell.accessoryType = check ?? false ? .checkmark : .none
-//    }
-//}
-
-
+//MARK: - extension SearchVC: UISearchBarDelegate
 extension SearchVC: UISearchBarDelegate {
-   
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//    }
-
+    //search books
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
             viewModel?.getListBook(withQuery: searchText)
         }
     }
 }
-
+//MARK: - extension SearchVC: SearchVCCellDelegate
 extension SearchVC: SearchVCCellDelegate {
-   
-    func isPressedReviewBookButton(idBook: String) {
-//        let navController = UINavigationController(rootViewController: self)
-//        navController.pushViewController(reviewVC, animated: true)
-        print("isPressedReviewBookButton", idBook)
-        
-        let reviewVC = storyboard?.instantiateViewController(withIdentifier: "ReviewVC") as! ReviewVC
-        reviewVC.idBook = idBook
-        navigationController?.pushViewController(reviewVC, animated: true)
-        
-    }
-    
+    //change a book`s favorite status
     func isPressedFavoriteButton(bookId: String, isFavorite: Bool) {
         viewModel?.isPressedFavoriteButton(bookId: bookId, isFavorite: isFavorite)
-        //print("isPressedFavoriteButton")
     }
 }
 

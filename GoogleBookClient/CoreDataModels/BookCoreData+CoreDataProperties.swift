@@ -6,7 +6,6 @@
 //
 //
 
-import Foundation
 import CoreData
 
 
@@ -15,7 +14,6 @@ extension BookCoreData {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<BookCoreData> {
         return NSFetchRequest<BookCoreData>(entityName: "Book")
     }
-
     @NSManaged public var author: String?
     @NSManaged public var book_id: String?
     @NSManaged public var image_URL: String?
