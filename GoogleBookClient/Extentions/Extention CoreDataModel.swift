@@ -39,7 +39,7 @@ extension CoreDataManager: CoreDataManagerProtocol {
             let result = try managedObjectContext.fetch(fetchRequest)
             return .success(result)
         } catch {
-            return .failure(Errors.loadMakersError)
+            return .failure(Errors.loadBooksError)
         }
     }
     //delete book with book Id
@@ -64,4 +64,4 @@ extension CoreDataManager: CoreDataManagerProtocol {
     }
 }
 
-    
+

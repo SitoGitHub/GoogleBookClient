@@ -93,6 +93,23 @@ extension SearchVC: UITableViewDataSource {
 }
 //MARK: - extension SearchVC: SearchVCProtocol
 extension SearchVC: SearchVCProtocol {
+    //show warning message
+    func presentWarnMessage(title: String?, descriptionText: String?) {
+        
+        let alertController = UIAlertController(title: title,
+                                                message: descriptionText,
+                                                preferredStyle: .alert)
+        
+        let okBtn = UIAlertAction(title: "OK",
+                                  style: .default,
+                                  handler: nil)
+        
+        alertController.addAction(okBtn)
+        
+        self.present(alertController,
+                                animated: true,
+                                completion: nil)
+    }
     
 }
 //MARK: - extension SearchVC: UISearchBarDelegate

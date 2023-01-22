@@ -106,8 +106,8 @@
             filePath = "GoogleBookClient/SearchViewModel/ViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "fetchFavoriteBooks()"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,8 +282,8 @@
             filePath = "GoogleBookClient/SearchViewModel/ViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "isPressedFavoriteButton(bookId:isFavorite:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,8 +298,8 @@
             filePath = "GoogleBookClient/SearchViewModel/ViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "isPressedFavoriteButton(bookId:isFavorite:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,8 +314,8 @@
             filePath = "GoogleBookClient/SearchViewModel/ViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "isPressedFavoriteButton(bookId:isFavorite:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,8 +330,8 @@
             filePath = "GoogleBookClient/SearchViewModel/ViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "isPressedFavoriteButton(bookId:isFavorite:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,8 +346,8 @@
             filePath = "GoogleBookClient/SearchViewModel/ViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "getListBook(withQuery:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -397,6 +397,149 @@
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "loadImageUsingUrlString(urlString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "20317209-FFB2-4D5E-BFE0-B606F477EDF1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleBookClient/Manager/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "makeRequestWithQuery(withQuery:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A1A4CAE0-ABC5-4323-89DB-2CE757DA92E2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleBookClient/Manager/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "makeRequestWithQuery(withQuery:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A472B66-005D-488B-9C14-68273BD7DAA4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleBookClient/Manager/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "makeRequestWithQuery(withQuery:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3AD87EDB-A408-4336-B64D-3445A6DA7306"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleBookClient/Manager/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "makeRequestWithQuery(withQuery:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1606B857-3561-4DB5-B14B-5DEAF406CE90"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleBookClient/SearchViewModel/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "isPressedFavoriteButton(bookId:isFavorite:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1606B857-3561-4DB5-B14B-5DEAF406CE90 - 7a15c221e967ff0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoogleBookClient.ViewModel.isPressedFavoriteButton(bookId: Swift.String, isFavorite: Swift.Bool) -&gt; ()"
+                  moduleName = "GoogleBookClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alekseigrachev/Documents/Swift/Projects/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5/OneVision/GoogleBookClient/GoogleBookClient%202/GoogleBookClient/GoogleBookClient/SearchViewModel/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "1288">
+               </Location>
+               <Location
+                  uuid = "1606B857-3561-4DB5-B14B-5DEAF406CE90 - 7a15c221e967ff0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoogleBookClient.ViewModel.isPressedFavoriteButton(bookId: Swift.String, isFavorite: Swift.Bool) -&gt; ()"
+                  moduleName = "GoogleBookClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alekseigrachev/Documents/Swift/Projects/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5/OneVision/GoogleBookClient/GoogleBookClient%202/GoogleBookClient/GoogleBookClient/SearchViewModel/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "1680">
+               </Location>
+               <Location
+                  uuid = "1606B857-3561-4DB5-B14B-5DEAF406CE90 - afd1a1283047af86"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (GoogleBookClient.Book) -&gt; Swift.Bool in GoogleBookClient.ViewModel.isPressedFavoriteButton(bookId: Swift.String, isFavorite: Swift.Bool) -&gt; ()"
+                  moduleName = "GoogleBookClient"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alekseigrachev/Documents/Swift/Projects/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5/OneVision/GoogleBookClient/GoogleBookClient%202/GoogleBookClient/GoogleBookClient/SearchViewModel/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55EC42B9-3E55-448A-8630-98B47450C47D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleBookClient/SearchViewModel/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "isPressedFavoriteButton(bookId:isFavorite:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

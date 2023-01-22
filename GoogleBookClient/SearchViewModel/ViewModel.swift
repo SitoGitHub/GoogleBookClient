@@ -27,7 +27,7 @@ final class ViewModel {
     }
     
     //create New Book
-    func createNewBook(book: Book) -> BookCoreData {
+    func createNewBook(book: Book) {
         let context = coreDataManager.managedObjectContext
         let newBook = BookCoreData(context: context)
         newBook.book_id = book.id
@@ -35,7 +35,6 @@ final class ViewModel {
         newBook.title = book.title
         newBook.image_URL = book.imageURL
         newBook.preview_link = book.previewLink
-        return newBook
     }
     
     //get all favorite books
@@ -55,6 +54,13 @@ extension ViewModel: ViewModelDelegate {
     
     //get list books with query
     func getListBook(withQuery text: String) {
+        Reachability.isConnectedToNetwork { (isConnected) in
+            if !isConnected {
+                    searchView?.presentWarnMessage(title: "Internet Connection Error",
+                                              descriptionText: "No Internet connection")
+                }
+        }
+        
         searchView?.activityIndicator.startAnimating()
         try? apiManager.makeRequestWithQuery(withQuery: text) { books in
             self.books = books
@@ -68,7 +74,14 @@ extension ViewModel: ViewModelDelegate {
                         }
                     }
                 case .failure(let error):
-                    print(error)
+                    switch error {
+                    case .loadBooksError:
+                        self.searchView?.presentWarnMessage(title: "Error database",
+                                                  descriptionText: "An error occurred while extracting book`s list")
+                    default:
+                        self.searchView?.presentWarnMessage(title: "Error database",
+                                                  descriptionText: "Unexpected error was occurred while deleting book")
+                    }
                 }
             }
             DispatchQueue.main.async {
@@ -122,7 +135,12 @@ extension ViewModel: ViewModelDelegate {
             switch booksCore {
             case.success(let booksCore):
                 if booksCore.count == 0 {
-                    _ = createNewBook(book: book)
+                    guard book.id != "" else { return }
+                    createNewBook(book: book)
+                    if !isSearching, let index = deletedBooks.firstIndex(where: { $0.id == bookId }){
+                        deletedBooks.remove(at: index)
+                    }
+                    
                 } else {
                     for bookCore in booksCore{
                         bookCore.setValue(book.previewLink, forKey: "preview_link")
@@ -133,7 +151,14 @@ extension ViewModel: ViewModelDelegate {
                 }
                 coreDataManager.saveContext()
             case .failure(let error):
-                print(error)
+                switch error {
+                case .loadBooksError:
+                    searchView?.presentWarnMessage(title: "Error database",
+                                              descriptionText: "An error occurred while adding a book to the favorite book`s list")
+                default:
+                    self.searchView?.presentWarnMessage(title: "Error database",
+                                              descriptionText: "Unexpected error was occurred while adding a book to the favorite book`s list")
+                }
             }
         case false:
             var book = Book(title: "", authors: "", id: "", imageURL: "", previewLink: "")
@@ -154,7 +179,17 @@ extension ViewModel: ViewModelDelegate {
                 }
                 coreDataManager.saveContext()
             case .failure(let error):
-                print(error)
+                switch error {
+                case .loadBooksError:
+                    searchView?.presentWarnMessage(title: "Error database",
+                                              descriptionText: "An error occurred while extracting book`s list")
+                default:
+                    self.searchView?.presentWarnMessage(title: "Error database",
+                                              descriptionText: "Unexpected error was occurred while deleting book")
+                }
+                if let index = books.firstIndex(where: { $0.id == book.id }){
+                    self.books[index].isFavorite = false
+                }
             }
         }
     }
