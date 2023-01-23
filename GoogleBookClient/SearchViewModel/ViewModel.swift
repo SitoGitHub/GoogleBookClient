@@ -27,7 +27,7 @@ final class ViewModel {
     }
     
     //create New Book
-    func createNewBook(book: Book) {
+    private func createNewBook(book: Book) {
         let context = coreDataManager.managedObjectContext
         let newBook = BookCoreData(context: context)
         newBook.book_id = book.id
@@ -36,16 +36,59 @@ final class ViewModel {
         newBook.image_URL = book.imageURL
         newBook.preview_link = book.previewLink
     }
+    //setBooksList from request
+    private func setBooksList(items: [Item]) {
+        var book = Book(title: "", authors: "", id: "", imageURL: "", previewLink: "")
+        for parsBook in items {
+            book.id = parsBook.id
+            
+            book.previewLink = parsBook.volumeInfo.previewLink != "" ? parsBook.volumeInfo.previewLink: "No preview link"
+            book.title = parsBook.volumeInfo.title != "" ? parsBook.volumeInfo.title: "Title not available"
+            book.imageURL = parsBook.volumeInfo.imageLinks.smallThumbnail
+            book.author = parsBook.volumeInfo.authors?.joined(separator: ", ") ?? "No author information"
+            self.books.append(book)
+        }
+    }
+    //mark As Favorite Books from request
+    private func markAsFavoriteBooks() {
+        for book in self.books {
+            let booksCore = self.coreDataManager.getBookWithBookId(bookId: book.id)
+            switch booksCore {
+            case.success(let booksCore):
+                if !booksCore.isEmpty {
+                    if let index = self.books.firstIndex(where: { $0.id == book.id }){
+                        self.books[index].isFavorite = true
+                    }
+                }
+            case .failure(let error):
+                switch error {
+                case .loadBooksError:
+                    self.searchView?.presentWarnMessage(title: "Error database",
+                                                        descriptionText: "An error occurred while extracting book`s list")
+                default:
+                    self.searchView?.presentWarnMessage(title: "Error database",
+                                                        descriptionText: "Unexpected error was occurred while deleting book")
+                }
+            }
+        }
+    }
     
     //get all favorite books
-    func fetchFavoriteBooks () {
+    private func fetchFavoriteBooks () {
         let favoriteBooks = coreDataManager.getFavoriteBooks()
         switch favoriteBooks {
         case.success(let favoriteBooks):
             self.favoriteBooks = favoriteBooks
             
         case .failure(let error):
-            print (error)
+            switch error {
+            case .loadBooksError:
+                searchView?.presentWarnMessage(title: "Error database",
+                                               descriptionText: "An error was occurred while extracting favorite book`s list")
+            default:
+                searchView?.presentWarnMessage(title: "Error database",
+                                               descriptionText: "Unexpected error was occurred while extracting favorite book`s list")
+            }
         }
     }
 }
@@ -54,40 +97,56 @@ extension ViewModel: ViewModelDelegate {
     
     //get list books with query
     func getListBook(withQuery text: String) {
-        Reachability.isConnectedToNetwork { (isConnected) in
-            if !isConnected {
-                    searchView?.presentWarnMessage(title: "Internet Connection Error",
-                                              descriptionText: "No Internet connection")
-                }
+        books = []
+        DispatchQueue.main.async {
+            self.searchView?.searchTableView.reloadData()
         }
-        
+        guard text != "" else {
+            self.searchView?.presentWarnMessage(title: "Warning",
+                                      descriptionText: "Please enter a text")
+            return
+        }
         searchView?.activityIndicator.startAnimating()
-        try? apiManager.makeRequestWithQuery(withQuery: text) { books in
-            self.books = books
-            for book in self.books {
-                let booksCore = self.coreDataManager.getBookWithBookId(bookId: book.id)
-                switch booksCore {
-                case.success(let booksCore):
-                    if booksCore.count > 0 {
-                        if let index = books.firstIndex(where: { $0.id == book.id }){
-                            self.books[index].isFavorite = true
+       
+        apiManager.makeRequestWithQuery(withQuery: text) {(result: Result<ParsBooks,Error>) in
+            switch result {
+            case .success(let parsBooks):
+                if let items = parsBooks.items {
+                    self.setBooksList(items: items)
+                } else {
+                    DispatchQueue.main.async {
+                        self.searchView?.presentWarnMessage(title: "",
+                                                            descriptionText: "Cannot find something. Try another request")
+                    }
+                }
+                self.markAsFavoriteBooks()
+                
+                DispatchQueue.main.async {
+                    self.searchView?.searchBar.resignFirstResponder()
+                    self.searchView?.activityIndicator.stopAnimating()
+                    self.searchView?.searchTableView.reloadData()
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.searchView?.activityIndicator.stopAnimating()
+                    
+                    if let error = error as? URLError {
+                        switch error.code {
+                        case .networkConnectionLost:
+                            self.searchView?.presentWarnMessage(title: "Connection error",
+                                                                descriptionText: "Network connection was lost. Please check your internet connection and try your request again")
+                        case .notConnectedToInternet:
+                            self.searchView?.presentWarnMessage(title: "Connection error",
+                                                                descriptionText: "Please check your internet connection and try your request again")
+                        case .timedOut:
+                            self.searchView?.presentWarnMessage(title: "Connection error",
+                                                                descriptionText: "The request timed out. Please check your internet connection and try your request again")
+                        default:
+                            self.searchView?.presentWarnMessage(title: "Connection Error",
+                                                                descriptionText: "Unexpected error was occurred while making request")
                         }
                     }
-                case .failure(let error):
-                    switch error {
-                    case .loadBooksError:
-                        self.searchView?.presentWarnMessage(title: "Error database",
-                                                  descriptionText: "An error occurred while extracting book`s list")
-                    default:
-                        self.searchView?.presentWarnMessage(title: "Error database",
-                                                  descriptionText: "Unexpected error was occurred while deleting book")
-                    }
                 }
-            }
-            DispatchQueue.main.async {
-                self.searchView?.searchBar.resignFirstResponder()
-                self.searchView?.activityIndicator.stopAnimating()
-                self.searchView?.searchTableView.reloadData()
             }
         }
     }
@@ -113,7 +172,7 @@ extension ViewModel: ViewModelDelegate {
     // is Pressed Favorite Button
     func isPressedFavoriteButton(bookId: String, isFavorite: Bool) {
         switch isFavorite {
-            //if state is Favorite
+        //if state is Favorite
         case true:
             var book = Book(title: "", authors: "", id: "", imageURL: "", previewLink: "")
             switch isSearching {
