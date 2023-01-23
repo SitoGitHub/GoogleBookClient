@@ -1,5 +1,5 @@
 //
-//  Extention CoreDataModel.swift
+//  Extension CoreDataModel.swift
 //  GoogleBookClient
 //
 //  Created by Aleksei Grachev on 20/1/23.
