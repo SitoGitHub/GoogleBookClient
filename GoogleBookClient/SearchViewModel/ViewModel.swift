@@ -145,6 +145,9 @@ extension ViewModel: ViewModelDelegate {
                             self.searchView?.presentWarnMessage(title: "Connection Error",
                                                                 descriptionText: "Unexpected error was occurred while making request")
                         }
+                    } else {
+                        self.searchView?.presentWarnMessage(title: "Connection Error",
+                                                            descriptionText: "Unexpected error was occurred while making request")
                     }
                 }
             }

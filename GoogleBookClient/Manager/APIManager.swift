@@ -13,7 +13,7 @@ protocol APIManagerProtocol {
 // MARK: - class APIManager
 final class APIManager {
     // MARK: - Properties
-    let booksUrl = "https://ww.googleapis.com/books/v1/volumes"
+    let booksUrl = "https://www.googleapis.com/books/v1/volumes"
     let bookQueryTemplate = [
         URLQueryItem(name: "maxResults", value: "10"),
         URLQueryItem(name: "fields", value: "items(id,volumeInfo(title, authors, imageLinks(smallThumbnail), previewLink))")

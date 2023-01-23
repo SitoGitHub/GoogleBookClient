@@ -14,7 +14,7 @@ struct Book {
     var imageURL: String
     var previewLink: String
     var isFavorite: Bool
-    
+    // MARK: - Init
     init(title: String, authors: String, id: String, imageURL: String, previewLink: String) {
         self.title = title
         self.author = authors
