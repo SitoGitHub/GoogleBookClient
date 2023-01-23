@@ -18,7 +18,7 @@ enum JSONError: Error {
 }
 
 // MARK: - CoreDataErrors
-public enum Errors: Error {
+enum Errors: Error {
     case loadBooksError
     case deleteBooksError
 }
