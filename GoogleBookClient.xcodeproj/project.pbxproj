@@ -11,6 +11,7 @@
 		9F0D60F8297A904400F70CE8 /* BookCoreData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0D60F6297A904400F70CE8 /* BookCoreData+CoreDataProperties.swift */; };
 		9F0D611D297BB86E00F70CE8 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0D611C297BB86E00F70CE8 /* ImageManager.swift */; };
 		9F334D30297E660300E390BA /* ParsBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F334D2F297E660300E390BA /* ParsBooks.swift */; };
+		9F334D322980592B00E390BA /* Extention TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F334D312980592B00E390BA /* Extention TableView.swift */; };
 		9F3FE7A4297786A000F7BF60 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7A3297786A000F7BF60 /* ViewModel.swift */; };
 		9F3FE7A6297786D300F7BF60 /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7A5297786D300F7BF60 /* ViewModelDelegate.swift */; };
 		9F3FE7AB2977C20A00F7BF60 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3FE7AA2977C20A00F7BF60 /* Book.swift */; };
@@ -38,6 +39,7 @@
 		9F0D60F6297A904400F70CE8 /* BookCoreData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookCoreData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9F0D611C297BB86E00F70CE8 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		9F334D2F297E660300E390BA /* ParsBooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsBooks.swift; sourceTree = "<group>"; };
+		9F334D312980592B00E390BA /* Extention TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention TableView.swift"; sourceTree = "<group>"; };
 		9F3FE7A3297786A000F7BF60 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		9F3FE7A5297786D300F7BF60 /* ViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDelegate.swift; sourceTree = "<group>"; };
 		9F3FE7AA2977C20A00F7BF60 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				9F3FE7E12979C6BB00F7BF60 /* Extension CoreDataModel.swift */,
+				9F334D312980592B00E390BA /* Extention TableView.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				9F3FE7DB2979C34B00F7BF60 /* CoreDataManager.swift in Sources */,
 				9F8C39772976E74C0057C306 /* SearchVC.swift in Sources */,
 				9F0D60F8297A904400F70CE8 /* BookCoreData+CoreDataProperties.swift in Sources */,
+				9F334D322980592B00E390BA /* Extention TableView.swift in Sources */,
 				9F8C39732976E74C0057C306 /* AppDelegate.swift in Sources */,
 				9F8C39752976E74C0057C306 /* SceneDelegate.swift in Sources */,
 				9F3FE7B02977D00C00F7BF60 /* Error.swift in Sources */,

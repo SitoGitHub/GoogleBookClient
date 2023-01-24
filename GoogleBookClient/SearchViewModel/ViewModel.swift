@@ -185,13 +185,13 @@ extension ViewModel: ViewModelDelegate {
     
     // show the search screen
     func isPressedSearchSegmentedControl() {
-        searchView?.searchController.searchBar.text = placeHolderForSearchTab
-        if isSearchBarEmpty {
-            books = []
-            DispatchQueue.main.async {
-                self.searchView?.searchTableView.reloadData()
-            }
+        if !books.isEmpty {
+            searchView?.searchTableView.scrollToTop()
+            searchView?.searchController.searchBar.text = placeHolderForSearchTab
+        } else {
+            searchView?.searchController.searchBar.text = ""
         }
+        
         isSearching = true
         searchView?.searchController.searchBar.resignFirstResponder()
         DispatchQueue.main.async {
@@ -205,6 +205,9 @@ extension ViewModel: ViewModelDelegate {
         }
         isSearching = false
         fetchFavoriteBooks()
+        if !favoriteBooks.isEmpty {
+            searchView?.searchTableView.scrollToTop()
+        }
         searchView?.searchController.searchBar.text = nil
         DispatchQueue.main.async {
             self.searchView?.searchTableView.reloadData()
