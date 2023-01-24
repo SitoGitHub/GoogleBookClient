@@ -24,22 +24,22 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fE7-tt-s6l">
-                        <rect key="frame" x="105" y="0.0" width="289" height="48.333333333333336"/>
+                        <rect key="frame" x="110" y="10.000000000000004" width="284" height="48.333333333333343"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ8-go-cCX">
-                                <rect key="frame" x="0.0" y="0.0" width="289" height="19.333333333333332"/>
+                                <rect key="frame" x="0.0" y="0.0" width="284" height="19.333333333333332"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooU-kp-u2d">
-                                <rect key="frame" x="0.0" y="19.333333333333332" width="289" height="16.999999999999996"/>
+                                <rect key="frame" x="0.0" y="19.333333333333332" width="284" height="16.999999999999996"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPw-Te-oOB">
-                                <rect key="frame" x="0.0" y="36.333333333333336" width="289" height="12"/>
+                                <rect key="frame" x="0.0" y="36.333333333333336" width="284" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                         </subviews>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EzR-OH-o1T">
-                        <rect key="frame" x="399" y="-6" width="60" height="60.333333333333336"/>
+                        <rect key="frame" x="399" y="4.3333333333333357" width="60" height="60.000000000000007"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="H83-pD-RuN"/>
                             <constraint firstAttribute="width" constant="60" id="ohM-DD-UrT"/>
@@ -62,9 +62,9 @@
                 <constraints>
                     <constraint firstItem="lVs-3Z-6lz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="8rf-pa-9jP"/>
                     <constraint firstItem="EzR-OH-o1T" firstAttribute="leading" secondItem="fE7-tt-s6l" secondAttribute="trailing" constant="5" id="BO8-s0-uwC"/>
-                    <constraint firstItem="fE7-tt-s6l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NDd-cF-zGE"/>
+                    <constraint firstItem="fE7-tt-s6l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="NDd-cF-zGE"/>
                     <constraint firstAttribute="bottom" secondItem="lVs-3Z-6lz" secondAttribute="bottom" constant="5" id="gbm-EK-lUG"/>
-                    <constraint firstItem="fE7-tt-s6l" firstAttribute="leading" secondItem="lVs-3Z-6lz" secondAttribute="trailing" constant="5" id="heP-YS-6dT"/>
+                    <constraint firstItem="fE7-tt-s6l" firstAttribute="leading" secondItem="lVs-3Z-6lz" secondAttribute="trailing" constant="10" id="heP-YS-6dT"/>
                     <constraint firstItem="EzR-OH-o1T" firstAttribute="centerY" secondItem="fE7-tt-s6l" secondAttribute="centerY" id="kh0-bf-kEs"/>
                     <constraint firstItem="lVs-3Z-6lz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="nL4-FP-XgM"/>
                     <constraint firstAttribute="trailing" secondItem="EzR-OH-o1T" secondAttribute="trailing" constant="5" id="qUA-ei-uIn"/>
