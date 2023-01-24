@@ -12,7 +12,7 @@ final class SearchTableViewCell: UITableViewCell {
     weak var searchVC: SearchVCCellDelegate?
     let imageManager: ImageManagerProtocol = ImageManager()
     
-    @IBOutlet weak var previewLink: UILabel!
+    @IBOutlet weak var previewLinkTextView: UITextView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var bookCoverImage: UIImageView!
@@ -42,7 +42,7 @@ final class SearchTableViewCell: UITableViewCell {
         bookNameLabel.text = title
         authorNameLabel.text = author
         self.bookId = bookId
-        self.previewLink.text = previewLink
+        self.previewLinkTextView.text = previewLink
         self.isFavorite = isFavorite
         
         let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
