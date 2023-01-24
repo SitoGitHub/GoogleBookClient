@@ -45,8 +45,8 @@ final class SearchVC: UIViewController {
     private func setupSearchTableView() {
         searchTableView.dataSource = self
         searchTableView.keyboardDismissMode = .onDrag
-        searchTableView.estimatedRowHeight = 85.0
-        searchTableView.rowHeight = UITableView.automaticDimension
+//        searchTableView.estimatedRowHeight = 85.0
+//        searchTableView.rowHeight = UITableView.automaticDimension
         //register cell
         let nibCell = UINib(nibName: searchTableViewCell, bundle: nil)
         searchTableView.register(nibCell, forCellReuseIdentifier: searchTableViewCell)

@@ -48,7 +48,6 @@ final class SearchTableViewCell: UITableViewCell {
         bookNameLabel.text = title
         authorNameLabel.text = author
         self.bookId = bookId
-       // self.previewLinkTextView.text = previewLink
         self.previewLink = previewLink
         self.isFavorite = isFavorite
         
