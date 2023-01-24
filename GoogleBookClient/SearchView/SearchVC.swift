@@ -44,11 +44,11 @@ final class SearchVC: UIViewController {
     //setup Search TableView
     private func setupSearchTableView() {
         searchTableView.dataSource = self
+        searchTableView.keyboardDismissMode = .onDrag
         //register cell
         let nibCell = UINib(nibName: searchTableViewCell, bundle: nil)
         searchTableView.register(nibCell, forCellReuseIdentifier: searchTableViewCell)
         searchTableView.rowHeight = UITableView.automaticDimension
-        // searchTableView.estimatedRowHeight = 300
     }
 }
 //MARK: - extension SearchVC: UITableViewDataSource
