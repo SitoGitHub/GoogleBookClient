@@ -12,6 +12,7 @@ final class SearchTableViewCell: UITableViewCell {
     weak var searchVC: SearchVCCellDelegate?
     let imageManager: ImageManagerProtocol = ImageManager()
     
+    @IBOutlet weak var previewLinkButton: UIButton!
     @IBOutlet weak var previewLinkTextView: UITextView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var bookNameLabel: UILabel!
@@ -20,6 +21,7 @@ final class SearchTableViewCell: UITableViewCell {
     var isFavorite = false
     var book: Book?
     var bookId = String()
+    var previewLink = String()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +31,11 @@ final class SearchTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-  //change a book`s favorite status
+    @IBAction func pressPreviewLinkButton(_ sender: Any) {
+        guard let url = URL(string: previewLink) else { return }
+        UIApplication.shared.open(url)
+    }
+    //change a book`s favorite status
     @IBAction func isFavoritedButton(_ sender: Any) {
         isFavorite = !isFavorite
         let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
@@ -42,7 +48,8 @@ final class SearchTableViewCell: UITableViewCell {
         bookNameLabel.text = title
         authorNameLabel.text = author
         self.bookId = bookId
-        self.previewLinkTextView.text = previewLink
+       // self.previewLinkTextView.text = previewLink
+        self.previewLink = previewLink
         self.isFavorite = isFavorite
         
         let imageButton = isFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star" )
