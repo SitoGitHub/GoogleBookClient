@@ -13,7 +13,6 @@ final class SearchTableViewCell: UITableViewCell {
     let imageManager: ImageManagerProtocol = ImageManager()
     
     @IBOutlet weak var previewLinkButton: UIButton!
-    @IBOutlet weak var previewLinkTextView: UITextView!
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var bookCoverImage: UIImageView!
