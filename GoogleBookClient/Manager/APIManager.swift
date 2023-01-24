@@ -48,7 +48,6 @@ extension APIManager: APIManagerProtocol {
         }
         session.dataTask(with: url) { (data, response, error) in
             if let error = error {
-                print(error)
                 completion(.failure(error))
                 return
             }

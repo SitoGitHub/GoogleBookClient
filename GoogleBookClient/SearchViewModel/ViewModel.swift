@@ -108,45 +108,45 @@ extension ViewModel: ViewModelDelegate {
         }
         searchView?.activityIndicator.startAnimating()
        
-        apiManager.makeRequestWithQuery(withQuery: text) {(result: Result<ParsBooks,Error>) in
+        apiManager.makeRequestWithQuery(withQuery: text) { [weak self] (result: Result<ParsBooks,Error>) in
             switch result {
             case .success(let parsBooks):
                 if let items = parsBooks.items {
-                    self.setBooksList(items: items)
+                    self?.setBooksList(items: items)
                 } else {
                     DispatchQueue.main.async {
-                        self.searchView?.presentWarnMessage(title: "",
+                        self?.searchView?.presentWarnMessage(title: "",
                                                             descriptionText: "Cannot find something. Try another request")
                     }
                 }
-                self.markAsFavoriteBooks()
+                self?.markAsFavoriteBooks()
                 
                 DispatchQueue.main.async {
-                    self.searchView?.searchBar.resignFirstResponder()
-                    self.searchView?.activityIndicator.stopAnimating()
-                    self.searchView?.searchTableView.reloadData()
+                    self?.searchView?.searchBar.resignFirstResponder()
+                    self?.searchView?.activityIndicator.stopAnimating()
+                    self?.searchView?.searchTableView.reloadData()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.searchView?.activityIndicator.stopAnimating()
+                    self?.searchView?.activityIndicator.stopAnimating()
                     
                     if let error = error as? URLError {
                         switch error.code {
                         case .networkConnectionLost:
-                            self.searchView?.presentWarnMessage(title: "Connection error",
+                            self?.searchView?.presentWarnMessage(title: "Connection error",
                                                                 descriptionText: "Network connection was lost. Please check your internet connection and try your request again")
                         case .notConnectedToInternet:
-                            self.searchView?.presentWarnMessage(title: "Connection error",
+                            self?.searchView?.presentWarnMessage(title: "Connection error",
                                                                 descriptionText: "Please check your internet connection and try your request again")
                         case .timedOut:
-                            self.searchView?.presentWarnMessage(title: "Connection error",
+                            self?.searchView?.presentWarnMessage(title: "Connection error",
                                                                 descriptionText: "The request timed out. Please check your internet connection and try your request again")
                         default:
-                            self.searchView?.presentWarnMessage(title: "Connection Error",
+                            self?.searchView?.presentWarnMessage(title: "Connection Error",
                                                                 descriptionText: "Unexpected error was occurred while making request")
                         }
                     } else {
-                        self.searchView?.presentWarnMessage(title: "Connection Error",
+                        self?.searchView?.presentWarnMessage(title: "Connection Error",
                                                             descriptionText: "Unexpected error was occurred while making request")
                     }
                 }
