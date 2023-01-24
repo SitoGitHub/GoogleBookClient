@@ -9,12 +9,17 @@ import Foundation
 //MARK: - class ViewModel
 final class ViewModel {
     //MARK: - Properties
+    weak var searchView: SearchVCProtocol?
     var apiManager: APIManagerProtocol
     let coreDataManager: CoreDataManagerProtocol
     var books: [Book]
     var deletedBooks: [Book]
     var favoriteBooks: [BookCoreData]
-    weak var searchView: SearchVCProtocol?
+    var filteredFavoriteBooks: [BookCoreData]
+    var placeHolderForSearchTab: String
+    var isSearchBarEmpty: Bool {
+        return searchView?.searchController.searchBar.text?.isEmpty ?? true
+    }
     
     var isSearching = true
     //MARK: - init
@@ -24,6 +29,8 @@ final class ViewModel {
         books = []
         favoriteBooks = []
         deletedBooks = []
+        filteredFavoriteBooks = []
+        placeHolderForSearchTab = ""
     }
     
     //create New Book
@@ -122,7 +129,7 @@ extension ViewModel: ViewModelDelegate {
                 self?.markAsFavoriteBooks()
                 
                 DispatchQueue.main.async {
-                    self?.searchView?.searchBar.resignFirstResponder()
+                    self?.searchView?.searchController.searchBar.resignFirstResponder()
                     self?.searchView?.activityIndicator.stopAnimating()
                     self?.searchView?.searchTableView.reloadData()
                 }
@@ -152,21 +159,61 @@ extension ViewModel: ViewModelDelegate {
             }
         }
     }
+    //get list favorite's books with query
+    func getListFavoriteBook(withQuery text: String) {
+        print(text)
+        filterContentForSearchText(text)
+        
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredFavoriteBooks = favoriteBooks.filter { (book: BookCoreData) -> Bool in
+            var result = false
+            if let bookAuthor = book.author {
+                result = bookAuthor.lowercased().contains(searchText.lowercased())
+            }
+            if !result, let title = book.title {
+                result = title.lowercased().contains(searchText.lowercased())
+            }
+            return result
+      }
+      
+        DispatchQueue.main.async {
+            self.searchView?.searchTableView.reloadData()
+        }
+    }
+    
     // show the search screen
     func isPressedSearchSegmentedControl() {
-        searchView?.searchBar.isHidden = false
-        searchView?.searchBar.text = ""
-        searchView?.searchBar.resignFirstResponder()
+        searchView?.searchController.searchBar.text = placeHolderForSearchTab
+        if isSearchBarEmpty {
+            books = []
+            DispatchQueue.main.async {
+                self.searchView?.searchTableView.reloadData()
+            }
+        }
         isSearching = true
+        searchView?.searchController.searchBar.resignFirstResponder()
         DispatchQueue.main.async {
             self.searchView?.searchTableView.reloadData()
         }
     }
     //search the favorite screen
     func isPressedFavoriteSegmentedControl() {
-        fetchFavoriteBooks()
-        searchView?.searchBar.isHidden = true
+        if let text = searchView?.searchController.searchBar.text {
+            placeHolderForSearchTab = text
+        }
         isSearching = false
+        fetchFavoriteBooks()
+        searchView?.searchController.searchBar.text = nil
+        DispatchQueue.main.async {
+            self.searchView?.searchTableView.reloadData()
+        }
+    }
+    
+    // reload tableView in the searchTab if is Empty Text SearchBar
+    func isEmptyTextSearchBar() {
+        books = []
         DispatchQueue.main.async {
             self.searchView?.searchTableView.reloadData()
         }

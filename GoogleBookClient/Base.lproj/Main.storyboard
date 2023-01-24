@@ -29,14 +29,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5eF-yK-b7s">
                                 <rect key="frame" x="0.0" y="90" width="393" height="728"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter text" id="w2n-dS-b8V">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="BYZ-38-t0r" id="K4W-Jb-5Be"/>
-                                    </connections>
-                                </searchBar>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="WBm-sG-Pic"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="OPN-Zq-qsi"/>
@@ -67,7 +59,6 @@
                     <navigationItem key="navigationItem" title="Search Books" id="fVU-j3-A6m"/>
                     <connections>
                         <outlet property="activityIndicator" destination="hyl-5f-K2Y" id="j1Q-K6-Ffr"/>
-                        <outlet property="searchBar" destination="w2n-dS-b8V" id="DOb-wh-ZZW"/>
                         <outlet property="searchTableView" destination="5eF-yK-b7s" id="qgo-Sa-BOk"/>
                     </connections>
                 </viewController>
