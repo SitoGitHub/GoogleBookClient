@@ -161,23 +161,16 @@ extension ViewModel: ViewModelDelegate {
     }
     //get list favorite's books with query
     func getListFavoriteBook(withQuery text: String) {
-        print(text)
-        filterContentForSearchText(text)
-        
-    }
-    
-    func filterContentForSearchText(_ searchText: String) {
         filteredFavoriteBooks = favoriteBooks.filter { (book: BookCoreData) -> Bool in
             var result = false
             if let bookAuthor = book.author {
-                result = bookAuthor.lowercased().contains(searchText.lowercased())
+                result = bookAuthor.lowercased().contains(text.lowercased())
             }
             if !result, let title = book.title {
-                result = title.lowercased().contains(searchText.lowercased())
+                result = title.lowercased().contains(text.lowercased())
             }
             return result
       }
-      
         DispatchQueue.main.async {
             self.searchView?.searchTableView.reloadData()
         }
@@ -198,6 +191,7 @@ extension ViewModel: ViewModelDelegate {
             self.searchView?.searchTableView.reloadData()
         }
     }
+    
     //search the favorite screen
     func isPressedFavoriteSegmentedControl() {
         if let text = searchView?.searchController.searchBar.text {
@@ -221,6 +215,7 @@ extension ViewModel: ViewModelDelegate {
             self.searchView?.searchTableView.reloadData()
         }
     }
+    
     // is Pressed Favorite Button
     func isPressedFavoriteButton(bookId: String, isFavorite: Bool) {
         switch isFavorite {
