@@ -54,6 +54,16 @@ final class SearchVC: UIViewController {
         let nibCell = UINib(nibName: searchTableViewCell, bundle: nil)
         searchTableView.register(nibCell, forCellReuseIdentifier: searchTableViewCell)
     }
+    //setup Cell
+    private func setupCell(_ element: BookCoreData, _ cell: SearchTableViewCell) {
+        let bookId = element.book_id ?? ""
+        let title = element.title ?? "Title not available"
+        let author = element.author ?? "No author information"
+        let previewLink = element.preview_link ?? "No preview link"
+        let imageURL = element.image_URL ?? ""
+        
+        cell.setup(bookId: bookId, title: title, author: author, previewLink: previewLink, imageURL: imageURL, isFavorite: true)
+    }
 }
 //MARK: - extension SearchVC: UITableViewDataSource
 extension SearchVC: UITableViewDataSource {
@@ -89,25 +99,16 @@ extension SearchVC: UITableViewDataSource {
                 cell.setup(bookId: element.id, title: element.title, author: element.author, previewLink: element.previewLink, imageURL: element.imageURL, isFavorite: element.isFavorite)
             }
         case false:
-            var element = BookCoreData()
             if let isSearchBarEmpty = viewModel?.isSearchBarEmpty {
                 if isSearchBarEmpty {
-                    if let book = viewModel?.favoriteBooks[indexPath.row] {
-                        element = book
+                    if let element = viewModel?.favoriteBooks[indexPath.row] {
+                        setupCell(element, cell)
                     }
                 } else {
-                    if let book = viewModel?.filteredFavoriteBooks[indexPath.row] {
-                        element = book
+                    if let element = viewModel?.filteredFavoriteBooks[indexPath.row] {
+                        setupCell(element, cell)
                     }
                 }
-                    let bookId = element.book_id ?? ""
-                    let title = element.title ?? "Title not available"
-                    let author = element.author ?? "No author information"
-                    let previewLink = element.preview_link ?? "No preview link"
-                    let imageURL = element.image_URL ?? ""
-                    
-                    cell.setup(bookId: bookId, title: title, author: author, previewLink: previewLink, imageURL: imageURL, isFavorite: true)
-               
             }
         }
         return cell
